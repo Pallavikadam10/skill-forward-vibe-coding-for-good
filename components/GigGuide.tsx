@@ -150,9 +150,20 @@ When you're ready to start coding or get stuck, just ask me.`
                 <div className="absolute top-0 right-0 w-64 h-64 bg-vibe-500/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
                 
                 <div className="flex flex-col md:flex-row gap-6 justify-between items-start mb-6">
-                    <div>
-                        <h2 className="text-2xl font-bold text-white mb-2">{gig.title}</h2>
-                        <p className="text-lg text-slate-300 italic">"{gig.clientVibe}"</p>
+                    <div className="flex-grow">
+                        <div className="flex items-center gap-2 mb-2">
+                           <span className="text-xs uppercase font-bold text-slate-500 tracking-wider bg-slate-950 px-2 py-1 rounded border border-slate-800">
+                               {gig.organization}
+                           </span>
+                           <span className="text-vibe-500 font-medium text-xs">
+                               {gig.cause}
+                           </span>
+                           <span className="text-xs font-mono text-vibe-400 bg-vibe-950/30 px-2 py-1 rounded border border-vibe-900/50 ml-auto">
+                               ⏱️ {gig.timeCommitment}
+                           </span>
+                        </div>
+                        <h2 className="text-2xl font-bold text-white mb-3 leading-tight">{gig.title}</h2>
+                        <p className="text-lg text-slate-300 leading-relaxed">{gig.impactDescription}</p>
                     </div>
                     <div className="flex-shrink-0 bg-slate-950 p-4 rounded-xl border border-slate-800 min-w-[200px]">
                         <h3 className="text-xs uppercase font-bold text-slate-500 mb-3 tracking-wider flex items-center gap-2">

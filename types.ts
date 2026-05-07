@@ -29,11 +29,13 @@ export interface CustomerPain {
 export interface Gig {
   id: string;
   title: string;
-  clientVibe: string;
+  organization: string;
+  cause: string;
+  impactDescription: string;
+  timeCommitment: string;
   recommendedStack: string;
   stackCost: StackCost;
   duration: GigDuration;
-  payout: string;
   category: GigCategory;
   customerPain: CustomerPain;
   approach: VibeStep[];

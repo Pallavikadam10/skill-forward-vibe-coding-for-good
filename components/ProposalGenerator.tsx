@@ -43,8 +43,8 @@ const ProposalGenerator: React.FC<ProposalGeneratorProps> = ({ gig, onClose }) =
           {/* Gig Details Summary */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
              <div className="bg-slate-800/50 p-4 rounded-xl border border-slate-700">
-                <h4 className="text-xs text-slate-500 uppercase font-bold mb-2">The Vibe</h4>
-                <p className="text-slate-300 text-sm italic">"{gig.clientVibe}"</p>
+                <h4 className="text-xs text-slate-500 uppercase font-bold mb-2">The Impact</h4>
+                <p className="text-slate-300 text-sm">{gig.impactDescription}</p>
              </div>
              <div className="bg-slate-800/50 p-4 rounded-xl border border-slate-700">
                 <h4 className="text-xs text-slate-500 uppercase font-bold mb-2">The Stack</h4>

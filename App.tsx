@@ -146,7 +146,9 @@ const App = () => {
       const matchesDuration = selectedDuration === 'All' || gig.duration === selectedDuration;
       const matchesPain = selectedPain === 'All' || gig.customerPain.type === selectedPain;
       const matchesSearch = gig.title.toLowerCase().includes(searchQuery.toLowerCase()) || 
-                            gig.clientVibe.toLowerCase().includes(searchQuery.toLowerCase());
+                            gig.organization.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                            gig.cause.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                            gig.impactDescription.toLowerCase().includes(searchQuery.toLowerCase());
       return matchesCategory && matchesCost && matchesDuration && matchesPain && matchesSearch;
     });
   }, [gigs, selectedCategory, selectedCost, selectedDuration, selectedPain, searchQuery]);

@@ -50,7 +50,7 @@ const GigCard: React.FC<GigCardProps> = ({ gig, onSelect, onAccept }) => {
             {gig.category}
           </span>
           <div className="flex flex-col items-end gap-1">
-             <span className="text-vibe-400 font-mono text-sm font-bold tracking-tight">{gig.payout}</span>
+             <span className="text-vibe-400 font-mono text-xs font-bold tracking-tight">⏱️ {gig.timeCommitment}</span>
              <div className="flex gap-1">
                <span className={`text-[10px] uppercase font-bold px-1.5 py-0.5 rounded border ${
                    gig.stackCost === 'Free' 
@@ -59,20 +59,26 @@ const GigCard: React.FC<GigCardProps> = ({ gig, onSelect, onAccept }) => {
                }`}>
                   {gig.stackCost === 'Free' ? 'Free Stack' : 'Paid Stack'}
                </span>
-               <span className={`flex items-center gap-1 text-[10px] uppercase font-bold px-1.5 py-0.5 rounded border ${getDurationColor(gig.duration)}`}>
-                  <ClockIcon className="w-3 h-3" />
-                  {gig.duration.split(' ')[0]}
-               </span>
              </div>
           </div>
         </div>
         
+        <div className="mb-2">
+            <span className="text-xs uppercase font-bold text-slate-500 tracking-wider">
+                {gig.organization}
+            </span>
+            <span className="mx-2 text-slate-700">&bull;</span>
+            <span className="text-xs font-medium text-vibe-500/80">
+                {gig.cause}
+            </span>
+        </div>
+
         <h3 className="text-lg font-bold text-white mb-2 leading-tight group-hover:text-vibe-300 transition-colors">
           {gig.title}
         </h3>
         
         <p className="text-slate-400 text-sm mb-4 line-clamp-3">
-          "{gig.clientVibe}"
+          {gig.impactDescription}
         </p>
 
         {/* Customer Pain Profile Section */}

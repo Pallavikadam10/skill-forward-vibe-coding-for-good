@@ -27,11 +27,13 @@ const gigSchema: Schema = {
     properties: {
       id: { type: Type.STRING },
       title: { type: Type.STRING },
-      clientVibe: { type: Type.STRING },
+      organization: { type: Type.STRING },
+      cause: { type: Type.STRING },
+      impactDescription: { type: Type.STRING },
+      timeCommitment: { type: Type.STRING },
       recommendedStack: { type: Type.STRING },
       stackCost: { type: Type.STRING, enum: ['Free', 'Paid'] },
       duration: { type: Type.STRING, enum: ['Easy (< 1 hr)', 'Medium (2-4 hrs)', 'Hard (> 8 hrs)'] },
-      payout: { type: Type.STRING },
       category: { type: Type.STRING, enum: ['Web App', 'Chrome Extension', 'Data Visualizer', 'Automation', 'Game'] },
       customerPain: {
         type: Type.OBJECT,
@@ -54,7 +56,7 @@ const gigSchema: Schema = {
         }
       }
     },
-    required: ['id', 'title', 'clientVibe', 'recommendedStack', 'stackCost', 'duration', 'payout', 'category', 'customerPain', 'approach']
+    required: ['id', 'title', 'organization', 'cause', 'impactDescription', 'timeCommitment', 'recommendedStack', 'stackCost', 'duration', 'category', 'customerPain', 'approach']
   }
 };
 
@@ -121,7 +123,7 @@ export const generateSocialGigs = async (cause: string): Promise<Gig[]> => {
     3.  **Customer Pain**:
         - "Migraine" problems are recurring, critical issues (e.g., "Daily coordination chaos").
         - "Headache" problems are annoying but temporary (e.g., "One-off data cleanup").
-    4.  **Payout**: Since these are social impact, the "payout" should be phrased as impact metrics or volunteer credits (e.g., "500 Karma Points", "Non-Profit tax receipt", "Eternal Gratitude").
+    4.  **Effort & Organization**: Include \`organization\` (e.g., a realistic fictional non-profit name), \`cause\` (the general field), \`impactDescription\` (how the code will help), and \`timeCommitment\` (e.g., "3-5 hours / week", "1 week total", "2 months").
     5.  **Stack**: Recommend modern AI tools (Bolt, Lovable, Replit, Cursor, Gemini, Claude).
     
     Return pure JSON.
@@ -184,7 +186,9 @@ export const generateProposal = async (gig: Gig, coderNote: string): Promise<str
     Act as a "Vibe Coder" volunteering for a social impact project.
     
     Gig: ${gig.title}
-    Cause/Vibe: ${gig.clientVibe}
+    Organization: ${gig.organization}
+    Cause: ${gig.cause}
+    Impact: ${gig.impactDescription}
     
     User Note: "${coderNote}"
     
@@ -216,7 +220,9 @@ export const generateProjectPlan = async (gig: Gig): Promise<ProjectPlan> => {
     
     Project: ${gig.title}
     Stack: ${gig.recommendedStack}
-    Vibe: ${gig.clientVibe}
+    Organization: ${gig.organization}
+    Target Cause: ${gig.cause}
+    Impact: ${gig.impactDescription}
     
     1. List 3-5 specific software tools/services the user needs to sign up for or install (e.g. VS Code, Cursor, Replit, Supabase, OpenAI API). Provide the real main URL.
     2. Break the project into 5-8 granular, actionable development tasks. Each task should be clear enough for an intermediate developer to execute.
